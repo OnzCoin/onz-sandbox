@@ -61,7 +61,7 @@ Sandbox.prototype._parse = function (data) {
 		var callback = callbacks[callback_id];
 
 		if (!callback) {
-			return this._onError(new Error("Lisk can't find callback_id from vm"));
+			return this._onError(new Error("Onz can't find callback_id from vm"));
 		}
 
 		var error = json.error;
@@ -72,14 +72,14 @@ Sandbox.prototype._parse = function (data) {
 		var message = json.message;
 
 		if (message === null || message === undefined) {
-			return this._onError(new Error("Lisk can't find message for request from vm"));
+			return this._onError(new Error("Onz can't find message for request from vm"));
 		}
 
 		message.dappid = this.id;
 
 		this.apiHandler(message, function (err, response) {
 			var responseObj = {
-				type: "lisk_response",
+				type: "onz_response",
 				callback_id: callback_id,
 				error: err,
 				response: response || {}
@@ -153,7 +153,7 @@ Sandbox.prototype.sendMessage = function (message, callback) {
 
 	var messageObj = {
 		callback_id: callback_id,
-		type: "lisk_call",
+		type: "onz_call",
 		message: message
 	};
 
